@@ -15,16 +15,15 @@ The generated data is synthetic and intended for learning. Model scores are not 
 
 ```text
 Churn_Intelligence_Studio/
-��� app.py
-��� requirements.txt
-��� data/                         # generated locally; ignored by Git
-��� artifacts/                    # trained locally; ignored by Git
-��� docs/retention_playbook.md
-��� src/
-    ��� data.py
-    ��� features.py
-    ��� train.py
-    ��� assistant.py
+- app.py
+- requirements.txt
+- data/                         # generated locally; ignored by Git
+- artifacts/                    # trained locally; ignored by Git
+- docs/retention_playbook.md
+- src/data.py
+- src/features.py
+- src/train.py
+- src/assistant.py
 ```
 
 ## Run it
@@ -74,7 +73,7 @@ Categorical fields are one-hot encoded and numeric fields are standardized using
 
 ## Authentication and credentials
 
-The repository started empty and contains no authentication implementation, login component, protected route, or token flow. This demo also has no user accounts or sign-in. Model training and prediction need no credentials. The optional GenAI feature talks to a local Ollama service and does not send a bearer token. No API keys or tokens are stored in the code. If you adapt the app to a hosted model, load its credential from an environment variable or secret manager; never commit it.
+The repository started empty and contains no authentication implementation, login component, protected route, or token flow. This demo also has no user accounts or sign-in. Model training and prediction need no credentials. The optional GenAI feature talks to a local Ollama service and does not send a bearer token. No API keys or tokens are stored in the code. If you adapt the app to a hosted model, load its credential from an environment variable or secret manager; never commit it. See [docs/authentication.md](docs/authentication.md) for the component and request-flow review.
 
 ## Limitations
 
