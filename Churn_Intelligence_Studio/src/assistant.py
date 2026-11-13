@@ -1,6 +1,7 @@
 """Local RAG helper: retrieve from the playbook, then ask Ollama."""
 
 from pathlib import Path
+import os
 
 import requests
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -22,9 +23,10 @@ def retrieve(question: str, count: int = 3) -> list[str]:
     return [passages[i] for i in order if scores[i] > 0]
 
 
-def ask_local_model(question: str, evidence: list[str], model: str = "llama3.2") -> str:
+def ask_local_model(question: str, evidence: list[str], model: str | None = None) -> str:
     if not evidence:
         evidence = ["The supplied playbook has no clearly matching section."]
+    model = model or os.getenv("OLLAMA_MODEL", "llama3.2")
     reference_text = "\n\n".join(evidence)
     prompt = (
         "Answer the user's question using only the reference notes below. "
